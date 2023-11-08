@@ -3,9 +3,9 @@ import { neon } from '@neondatabase/serverless';
 
 async function getData() {
 
-  const sql = neon(process.env.DATABASE_URL);
+  // const sql = neon(process.env.DATABASE_URL);
 
-  const response = await sql`SELECT * FROM lessons`;
+  // const response = await sql`SELECT * FROM lessons`;
 
   return response;
 
