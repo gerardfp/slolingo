@@ -7,8 +7,9 @@ async function getData() {
 
   // const response = await sql`SELECT * FROM lessons`;
 
-  return response;
+  // return response;
 
+  return '{ "name": "Okey" } ';
 }
 
 
