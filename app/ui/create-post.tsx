@@ -4,13 +4,16 @@ import { getSession } from '@auth0/nextjs-auth0';
 
 export function CreatePost(){
 
-    async function create(formData) {
+    async function create(formData: FormData) {
         'use server';
+
+        console.log(formData.get('content'));
 
         const { user } = await getSession() || { user: null};
         
-        if (user) {
-            await sql`INSERT INTO posts(content, user_id) VALUES(${formData.get('content')}, ${user.user_id})`
+        if (user && formData.get('content')) {
+            const content = formData.get('content')?.toString();
+            await sql`INSERT INTO posts(content, user_id) VALUES(${content}, ${user.user_id})`
 
             revalidatePath('/');
         }
