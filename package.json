@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "seed": "node -r dotenv/config ./scripts/seed.js"
+    "seed": "NODE_TLS_REJECT_UNAUTHORIZED=0 node --openssl-config=openssl.cnf -r dotenv/config ./scripts/seed.js"
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^3.2.0",

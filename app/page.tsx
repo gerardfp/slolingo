@@ -12,10 +12,19 @@ export default async function Home() {
 
   return (
     <>
-
-    <MainNav user={user}></MainNav>
-    <PostStream posts={posts}></PostStream>
-    <CreatePost></CreatePost>
+    { user ?
+      <>
+      <div className="flex flex-col gap-8 min-h-screen">
+        <PostStream posts={posts}></PostStream>
+        <CreatePost></CreatePost>
+      </div>
+      </>
+    :
+    <div>
+          <p>This is the landing page</p>
+          <a href="/api/auth/login">Login</a>
+      </div>
+    }
     </>
-  )
+    )
 }

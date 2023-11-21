@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { UserProvider } from '@auth0/nextjs-auth0/client';
 import { getSession } from '@auth0/nextjs-auth0';
+import { MainNav } from './ui/main-nav';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,21 +21,20 @@ export default async function RootLayout({
   const { user } = await getSession() || { user: null};
 
   return (
-    <html lang="en">
+    <html lang="en" className="min-h-screen">
       <UserProvider>
         
-        <body className={inter.className}>
+        <body className=" min-h-screen">
         { user ?
-          <>
-           {children}
-          </>
+          <div className="flex min-h-screen">
+            <MainNav user={user}></MainNav>
+            {children}
+          </div>
          :
-         <div>
-          <p>This is the landing page</p>
-          <a href="/api/auth/login">Login</a>
-         </div>
+         <>
+          {children}
+         </>
         }
-          
         </body>
       </UserProvider>
     </html>

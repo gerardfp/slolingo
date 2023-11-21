@@ -20,7 +20,7 @@ export function CreatePost(){
     }
 
     return <form action={create}>
-        <input type="text" name="content" />
+        <input type="text" name="content" className="text-black" />
         <input type="submit" value="crear" />
     </form>
 }
