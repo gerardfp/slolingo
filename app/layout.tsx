@@ -1,23 +1,15 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import { UserProvider } from '@auth0/nextjs-auth0/client';
 import { getSession } from '@auth0/nextjs-auth0';
 import { MainNav } from './ui/main-nav';
-
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Slomics',
   description: 'Slo social network',
 }
 
-export default async function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
-  
+export default async function Layout({ children, create, yeah }) {
   const { user } = await getSession() || { user: null};
 
   return (
@@ -25,14 +17,20 @@ export default async function RootLayout({
       <UserProvider>
         
         <body className=" min-h-screen">
+          <div>
+            { create }
+        { yeah }
+        </div>
         { user ?
           <div className="flex min-h-screen">
             <MainNav user={user}></MainNav>
-            {children}
+            <div className='p-8'>
+              { children }
+            </div>
           </div>
          :
          <>
-          {children}
+          { children }
          </>
         }
         </body>

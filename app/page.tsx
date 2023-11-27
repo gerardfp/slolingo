@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { getSession } from '@auth0/nextjs-auth0';
 import { sql } from '@vercel/postgres';
 import { PostStream } from './ui/post-stream';
-import { CreatePost } from './ui/create-post';
+import { CreatePost } from './@create/create/page';
 import { MainNav } from './ui/main-nav';
 
 export default async function Home() {
@@ -16,7 +16,6 @@ export default async function Home() {
       <>
       <div className="flex flex-col gap-8 min-h-screen">
         <PostStream posts={posts}></PostStream>
-        <CreatePost></CreatePost>
       </div>
       </>
     :
