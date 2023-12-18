@@ -4,6 +4,7 @@ import { sql } from '@vercel/postgres';
 import { PostStream } from './ui/post-stream';
 import { CreatePost } from './@create/create/page';
 import { MainNav } from './ui/main-nav';
+import { InputDev} from './ui/input-dev';
 
 export default async function Home() {
   const { user } = await getSession() || { user: null};
@@ -24,6 +25,7 @@ export default async function Home() {
           <a href="/api/auth/login">Login</a>
       </div>
     }
+    <InputDev></InputDev>
     </>
     )
 }
