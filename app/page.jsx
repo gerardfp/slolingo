@@ -1,15 +1,15 @@
 import Link from 'next/link'
-import { getSession } from '@auth0/nextjs-auth0';
+import { getSession, withPageAuthRequired } from '@auth0/nextjs-auth0';
 import { sql } from '@vercel/postgres';
 import { PostStream } from './ui/post-stream';
-import { CreatePost } from './@create/create/page';
-import { MainNav } from './ui/main-nav';
 import { InputDev} from './ui/input-dev';
 
-export default async function Home() {
+
+export default withPageAuthRequired(
+  async function Home() {
   const { user } = await getSession() || { user: null};
 
-  const posts = (await sql`SELECT * FROM posts JOIN users USING(user_id)`).rows;
+  const posts = (await sql`SELECT * FROM posts WHERE user_id = ${user.user_id}`).rows;
 
   return (
     <>
@@ -28,4 +28,6 @@ export default async function Home() {
     <InputDev></InputDev>
     </>
     )
-}
+},
+{ returnTo: '/'}
+);
