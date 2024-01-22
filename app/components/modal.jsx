@@ -26,9 +26,9 @@ export function Modal({ children }) {
 
     return(
         <>
-            <dialog className="backdrop:bg-gray-900 backdrop:opacity-50" ref={dialogRef} onClose={onDismiss} onClick={closeModal}>
-                <button onClick={onDismiss} className=''>x</button>
-                <div className="min-h-[200px] bg-red-500" >
+            <dialog className="backdrop:bg-gray-900 backdrop:opacity-50 rounded shadow-md" ref={dialogRef} onClose={onDismiss} onClick={closeModal}>
+                <span onClick={onDismiss} className='absolute top-1 right-2 p-1 hover:bg-gray-300 cursor-pointer'>x</span>
+                <div className="min-h-[200px] bg-black p-8" >
                     {children}
                 </div>
             </dialog>

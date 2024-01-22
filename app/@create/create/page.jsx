@@ -19,8 +19,8 @@ export default function create(){
     return (
     <Modal>
         <form action={publicar}>
-            <input name="content" />    
-            <input type="submit" value="Publicar" />
+            <input name="content" className='rounded p-2'/>    
+            <input type="submit" value="Publicar" className="text-white rounded bg-blue-400 p-2" />
         </form>
     </Modal>
     )

@@ -16,21 +16,24 @@ export default async function Layout({ children, create }) {
       <UserProvider>
         
         <body className=" min-h-screen">
-          <div>
+          
+          { user ?
+          <>
+            <>
             { create }
-          </div>
-        { user ?
-          <div className="flex min-h-screen">
-            <MainNav user={user}></MainNav>
-            <div className='p-8'>
-              { children }
+            </>
+            <div className="flex min-h-screen">
+              <MainNav user={user}></MainNav>
+              <div className='p-8'>
+                { children }
+              </div>
             </div>
-          </div>
-         :
-         <>
-          { children }
-         </>
-        }
+          </>
+          :
+          <>
+            { children }          
+          </>
+          }
         </body>
       </UserProvider>
     </html>
