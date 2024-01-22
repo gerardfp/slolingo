@@ -18,11 +18,10 @@ export function Modal({ children }) {
     }
 
     function closeModal(e) {
-        console.log(e.target)
         if (e.target === dialogRef.current) {
             e.stopPropagation();
-           onDismiss();
-          }
+            onDismiss();
+        }
     }
 
     return(
@@ -30,9 +29,8 @@ export function Modal({ children }) {
             <dialog className="backdrop:bg-gray-900 backdrop:opacity-50" ref={dialogRef} onClose={onDismiss} onClick={closeModal}>
                 <button onClick={onDismiss} className=''>x</button>
                 <div className="min-h-[200px] bg-red-500" >
-                {children}
+                    {children}
                 </div>
-                
             </dialog>
         </>
    )
