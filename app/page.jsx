@@ -1,8 +1,6 @@
-import Link from 'next/link'
 import { getSession, withPageAuthRequired } from '@auth0/nextjs-auth0';
 import { sql } from '@vercel/postgres';
 import { PostStream } from './ui/post-stream';
-import { InputDev} from './ui/input-dev';
 
 
 export default withPageAuthRequired(
@@ -25,7 +23,6 @@ export default withPageAuthRequired(
           <a href="/api/auth/login">Login</a>
       </div>
     }
-    <InputDev></InputDev>
     </>
     )
 },
