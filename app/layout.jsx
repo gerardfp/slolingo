@@ -1,7 +1,7 @@
 import './globals.css'
 import { UserProvider } from '@auth0/nextjs-auth0/client';
 import { getSession } from '@auth0/nextjs-auth0';
-import { MainNav } from './ui/main-nav';
+import MainNav from './ui/main-nav';
 
 export const metadata = {
   title: 'Slomics',

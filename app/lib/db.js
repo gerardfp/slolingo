@@ -4,7 +4,8 @@ import { getSession } from "@auth0/nextjs-auth0";
 import { sql } from "@vercel/postgres";
 import { revalidatePath } from "next/cache";
 
-export async function createPost(formData: FormData) {
+export async function createPost(formData) {
+    'user server'
     
     const { user } = await getSession() || { user: null};
     
