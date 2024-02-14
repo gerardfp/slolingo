@@ -5,11 +5,13 @@ import { PostStream } from './ui/post-stream';
 import { InputDev} from './ui/input-dev';
 
 
-export default withPageAuthRequired(
-  async function Home() {
+export default async () => {
   const { user } = await getSession() || { user: null};
 
-  const posts = (await sql`SELECT * FROM posts WHERE user_id = ${user.user_id}`).rows;
+  if (user) {
+
+    const posts = (await sql`SELECT * FROM posts WHERE user_id = ${user.user_id}`).rows;
+  }
 
   return (
     <>
@@ -25,9 +27,6 @@ export default withPageAuthRequired(
           <a href="/api/auth/login">Login</a>
       </div>
     }
-    <InputDev></InputDev>
     </>
     )
-},
-{ returnTo: '/'}
-);
+}
